@@ -216,4 +216,15 @@
 	   HD44780_print_byte(me, *c++);
 	}
 
+	void HD44780_scrollDisplayLeft(HD44780 *me){
+		HD44780_command(me, LCD_CURSORSHIFT | LCD_DISPLAYMOVE | LCD_MOVELEFT);
+
+	}	
+
+	void HD44780_scrollDisplayRight(HD44780 *me){
+		HD44780_command(me, LCD_CURSORSHIFT | LCD_DISPLAYMOVE | LCD_MOVERIGHT);
+
+	} 
+
+
 #endif /*HD44780LIB_H_*/

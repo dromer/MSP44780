@@ -1,6 +1,8 @@
 #include <msp430.h>// Headers for specific device
 #include <timera.h>
 #include "HD44780LIB.h"
+#include <delay.h>
+
 
 //TO DO Arduino stuff
  
@@ -14,6 +16,8 @@ void setup(){
 }
 
 void loop() {
+delay(0xFFFF);
+HD44780_scrollDisplayLeft(&theHD44780);
 
 }
 
