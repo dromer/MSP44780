@@ -1,12 +1,11 @@
-#include <msp430.h>// Headers for specific device
+#include <msp430.h>
 #include <timera.h>
 #include "HD44780LIB.h"
 #include <delay.h>
 
-//TO DO Arduino stuff
- 
+
 HD44780 theHD44780;
-const char msg[] = "Hej Kobenhavn!";
+const char msg[] = "Hej all the things! o/";	// Todo: custom characters
 
 void setup(){
 	HD44780_init(&theHD44780,4,5,0,1,2,3);
@@ -18,7 +17,7 @@ void setup(){
 void loop() {
 	delay(0xFFFF);
 	delay(0xFFFF);
-// dingen!
+	
 	HD44780_scrollDisplayLeft(&theHD44780);
 
 }
