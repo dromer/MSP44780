@@ -3,11 +3,10 @@
 #include "HD44780LIB.h"
 #include <delay.h>
 
-
 //TO DO Arduino stuff
  
 HD44780 theHD44780;
-const char msg[] = "Hello MSP430!";
+const char msg[] = "Hej Kobenhavn!";
 
 void setup(){
 	HD44780_init(&theHD44780,4,5,0,1,2,3);
@@ -17,8 +16,9 @@ void setup(){
 }
 
 void loop() {
-delay(0xFFFF);
-//HD44780_scrollDisplayLeft(&theHD44780);
+	delay(0xFFFF);
+	delay(0xFFFF);
+// dingen!
+	HD44780_scrollDisplayLeft(&theHD44780);
 
 }
-

@@ -57,7 +57,8 @@
 	  uint8_t _numlines,_currline;
 	
 	} HD44780;
-	
+
+// Just a list? do I need all of these?
 	void HD44780_begin(HD44780 *me, uint8_t cols, uint8_t lines);
 	void HD44780_send(HD44780 *me, uint8_t value, uint8_t mode);
 //	void HD44780_command(HD44780 *me, uint8_t value);
