@@ -61,7 +61,8 @@
 	void delayMicrosecondszz(unsigned int time){
 		TACCR0 = time; // Upper limit of count for TAR
 		TACTL = MC_1|ID_0|TASSEL_2|TACLR; // Set up and start Timer A
-		__low_power_mode_3 ();
+		LPM3;
+		//__low_power_mode_3 ();
 		//__delay_cycles
 	}	
 	
@@ -73,11 +74,15 @@
 		if (delay) delayMicroseconds((delay << 10) - (delay << 4) - (delay << 3));
 	}
 	
-	#pragma vector = TIMERA0_VECTOR
-	__interrupt void TA0_ISR (void)
+//	#pragma vector = TIMERA0_VECTOR
+
+	void timera_cc0_interrupt(void){
+		LPM3_EXIT;
+	}
+/*	__interrupt void TA0_ISR (void)
 	{
 		__low_power_mode_off_on_exit(); // Restore Active Mode on return
-	}	
+	}	*/
 	
 	
 	
