@@ -74,11 +74,7 @@
 	
 	inline void HD44780_command(HD44780 *me, uint8_t value) {
 	  HD44780_send(me, value, LOW);
-	}
-	
-	
-	
-	
+	}	
 	
 	
 	void HD44780_send(HD44780 *me, uint8_t value, uint8_t mode) {
@@ -86,9 +82,7 @@
 	    HD44780_write4bits(me, value>>4);
 	    HD44780_write4bits(me, value);
 	}
-	
-	
-	
+
 	
 	void HD44780_init(HD44780 *me, int rs, int enable, int d0, int d1, int d2, int d3)
 	{
@@ -216,6 +210,17 @@
 	   HD44780_print_byte(me, *c++);
 	}
 
+	void HD44780_setCursor(HD44780 *me, uint8_t col, uint8_t row) {
+	  int row_offsets[] = { 0x00, 0x40, 0x14, 0x54 };
+	    if ( row > me->_numlines ) {
+	        row = me->_numlines-1;    // we count rows starting w/0
+		  }
+
+		    HD44780_command(me, LCD_SETDDRAMADDR | (col + row_offsets[row]));
+
+		    } 
+	
+	
 	void HD44780_scrollDisplayLeft(HD44780 *me){
 		HD44780_command(me, LCD_CURSORSHIFT | LCD_DISPLAYMOVE | LCD_MOVELEFT);
 
