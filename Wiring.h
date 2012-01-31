@@ -1,6 +1,5 @@
 #include <watchdog.h>
 
-
 #ifndef WIRING_H_
 #define WIRING_H_
 
