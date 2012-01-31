@@ -1,3 +1,6 @@
+#include <watchdog.h>
+
+
 #ifndef WIRING_H_
 #define WIRING_H_
 
@@ -19,8 +22,9 @@
 	//     and an infinite "loop()" routine
 	void setup(void);
 	void loop(void);
-	int main(){
-		WDTCTL = WDTPW|WDTHOLD; // Stop watchdog timer
+	
+	int main(void){
+		watchdog_off();	//WDTCTL = WDTPW|WDTHOLD; // Stop watchdog timer
 		setup(); 
 		for(;;){ loop(); }
 		}
@@ -57,7 +61,11 @@
 		} // doing nothing
 		TACTL &= (~TAIFG); // Clear overflow flag		
 	}
-	
+
+
+
+
+	// not used in HD44780.LIB!
 	void delayMicrosecondszz(unsigned int time){
 		TACCR0 = time; // Upper limit of count for TAR
 		TACTL = MC_1|ID_0|TASSEL_2|TACLR; // Set up and start Timer A
@@ -65,7 +73,7 @@
 		//__low_power_mode_3 ();
 		//__delay_cycles
 	}	
-	
+	// not used in HD44780.LIB!
 	inline void delayMilliseconds(unsigned int delay){	
 		while(delay > 60){
 			delayMicroseconds(60000);
@@ -73,7 +81,9 @@
 		}
 		if (delay) delayMicroseconds((delay << 10) - (delay << 4) - (delay << 3));
 	}
-	
+
+
+
 //	#pragma vector = TIMERA0_VECTOR
 
 	void timera_cc0_interrupt(void){
